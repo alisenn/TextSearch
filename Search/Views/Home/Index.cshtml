@@ -1,0 +1,73 @@
+﻿
+<html>
+<head>
+    <title>Toogdex</title>
+    <style>
+        h1 {
+            margin-top: 120px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+
+        input {
+            border-radius: 25px;
+            border: 2px solid #000000;
+            padding: 15px;
+            width: 100%;
+            height: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form align="center">
+        <div contenteditable>
+            <h1 style="font-size:85px">
+                @*Toogdex*@
+
+                <span style="color:red">T</span><span style="color:blue">o</span><span style="color:yellow">o</span><span style="color:deepskyblue">g</span><span style="color:green">d</span><span style="color:orangered">e</span><span style="color:purple">x</span>
+
+            </h1>
+        </div>
+        <input style="font-size:20px" type="text" id="str" alt="str" placeholder="Toogdex'te arama yapın" />
+
+        <font size="5">
+            <div id="results"></div>
+        </font>
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script>
+
+                    $(document).ready(function () {
+                        $("#str").on("keyup", function () {
+                            var str = $("#str").val();
+                            $.ajax({
+                                url: '@Url.Action("Bul","Home")?str=' + str,
+                                success: function (data) {
+                                        if ($("#str").val().length == 0) {
+                                            $("#results").html(data.result);
+                                        }
+                                        if (data.status == "ok" && $("#str").val().length > 2) {
+
+                                            var str3 = $("#str").val();
+                                            var str2 = (data.result);
+                                            var words = [str3];
+                                            var reg = RegExp(words.join('|'), 'gi');
+                                            var p = document.createElement('p');
+                                            p.innerText = str2;
+                                            p.innerHTML = p.innerHTML.replace(reg, "<b>$&</b>");
+                                            document.body.appendChild(p);
+
+                                            $("#results").html(p);
+
+
+                                            //$("#results").html(data.result);
+                                            }
+                                      }
+                                });
+                            });
+                    });
+
+        </script>
+    </form>
+</body>
+</html>
