@@ -14,26 +14,6 @@ namespace Search.Controllers
         {
             return View();
         }
-
-        //public ActionResult About()
-        //{
-        //    ViewBag.Message = "This application finds the words you type";
-
-        //    return View();
-        //}
-
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "You can contact me from the links below";
-
-        //    return View();
-        //}
-        //private string AddNewLine(string str)
-        //{
-        //    var result = string.Join("<br />", str.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Select(x => HttpUtility.HtmlEncode(x)));
-
-        //    return result;
-        //}
         public ActionResult Bul(string str)
         {
             string text = @"Alan Mathison Turing, 23 Haziran 1912 tarihinde İngiltere’nin başkenti Londra’da doğmuştur. Babası 
