@@ -59,7 +59,6 @@ namespace Search.Controllers
             {
                 result = "";
             }
-            //result = AddNewLine(result);
             var data = new { status = "ok", result = result };
 
             return Json(data, JsonRequestBehavior.AllowGet);
